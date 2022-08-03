@@ -18,7 +18,7 @@ switch (process.env.NODE_ENV) {
 }
 
 
-const URL = 'mongodb://localhost:27017/' + DB_NAME
+const URL = 'mongodb+srv://admin:admin@cluster0.cccmi.mongodb.net/?retryWrites=true&w=majority'
 
 mongoose.connect(URL)
     .catch(err => {
