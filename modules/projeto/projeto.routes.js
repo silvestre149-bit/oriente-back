@@ -18,6 +18,7 @@ router
     .patch('/avaliador/:id', projetoController.aceitarAvaliador)
     .patch('/suplente/:id', projetoController.aceitarSuplente)
     .patch('/cronograma/:id', projetoController.adicionarCronograma)
+    .patch('/remover/aluno/:id', projetoController.removerAluno)
     .patch('/remover/orientador/:id', projetoController.removerOrientador)
     .patch('/remover/avaliador/:id', projetoController.removerAvaliador)
     .patch('/remover/suplente/:id', projetoController.removerSuplente)

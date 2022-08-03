@@ -136,6 +136,12 @@ export default class ProjetoService {
         return Projeto.findByIdAndUpdate(id, { $set: { participantes: projeto.participantes } }, { new: true }).lean();
     };
 
+    static async removerAluno(id, body) {
+        const projeto = await Projeto.findById(id).lean();
+        const participantes = projeto.participantes.filter(participante => participante.tipo !== 'aluno' && participante.usuarioId !== body.id);
+        return Projeto.findByIdAndUpdate(id, { $set: { participantes: participantes } }, { new: true }).lean();
+    };
+
     static async removerOrientador(id) {
         const projeto = await Projeto.findById(id).lean();
         const participantes = projeto.participantes.filter(participante => participante.tipo !== 'orientador');

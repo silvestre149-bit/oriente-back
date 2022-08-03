@@ -122,6 +122,14 @@ export async function adicionarCronograma(req, res) {
         .then(data => res.json(data))
 }
 
+export async function removerAluno(req, res) {
+    const { id } = req.params;
+    const { body } = req;
+
+    return projetoService.removerAluno(id, body)
+        .then(data => res.json(data))
+}
+
 export async function removerOrientador(req, res) {
     const { id } = req.params;
 
