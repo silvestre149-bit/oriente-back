@@ -18,7 +18,7 @@ switch (process.env.NODE_ENV) {
 }
 
 
-const URL = 'mongodb://localhost:27017/' + DB_NAME
+const URL = process.env.DB_URL
 
 mongoose.connect(URL)
     .catch(err => {
