@@ -44,3 +44,17 @@ export async function deletar(req, res) {
         .then(data => res.json(data))
         .catch(({ msg, code }) => console.log("Erro na busca."))
 }
+
+export async function deletarTodas(req, res) {
+    const { id } = req.params;
+    return notificacaoService.deletarTodas(id)
+        .then(data => res.json(data))
+        .catch((error) => console.log(error))
+}
+
+export async function deletarVarias(req, res) {
+    const { id } = req.params;
+    return notificacaoService.deletarVarias(id)
+        .then(data => res.json(data))
+        .catch((error) => console.log(error))
+}

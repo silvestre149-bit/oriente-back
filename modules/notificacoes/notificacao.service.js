@@ -56,4 +56,12 @@ export default class NotificacaoService {
                 return Notificacao.findByIdAndRemove(id).lean()
             })
     }
+
+    static async deletarTodas() {
+        return Notificacao.deleteMany().lean(); 
+    }
+    
+    static async deletarVarias(id) {
+        return Notificacao.deleteMany({ projetoId: id}).lean(); 
+    }
 }

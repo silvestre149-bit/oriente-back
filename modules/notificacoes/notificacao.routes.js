@@ -9,5 +9,7 @@ router
     .post('/', notificacaoController.criar)
     .post('/participantes', notificacaoController.enviarConvitesParticipantes)
     .delete('/:id', notificacaoController.deletar)
+    .delete('/deletar/todas/', notificacaoController.deletarTodas)
+    .delete('/deletar/varias/:id', notificacaoController.deletarVarias)
 
 export default router;

@@ -19,8 +19,7 @@ const participacaoSchema = new mongoose.Schema({
     },
     usuarioId: {
         type: String,
-        required: true,
-        ref: 'usuario'
+        required: true
     },
     semestreId: {
         type: String,
