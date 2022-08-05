@@ -14,10 +14,10 @@ router
     .post('/:id/participacao', usuarioParticipacaoController.adicionarParticipacao)
     .patch('/:id', usuarioController.atualizar)
     .patch('/:id/turmas', usuarioController.atualizarAluno)
+    .patch('/:id/remover/participacao', usuarioParticipacaoController.removerParticipacao)
     .delete('/:id', usuarioController.deletar)
     .delete('/', usuarioController.deletarTodos)
     .delete('/deletar/alunos/:id', usuarioController.deletarTodosAlunos)
-    .patch('/:id/remover/participacao', usuarioParticipacaoController.removerParticipacao)
 
 
 export default router;
