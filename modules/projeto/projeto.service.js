@@ -3,8 +3,6 @@ import { setErro } from '../_utils/error/index.js';
 import { HTTP_STATUS } from '../_utils/types/index.js';
 import { Projeto } from './entities/projeto.entity.js';
 import { Aluno } from '../usuario/entities/aluno.entity.js';
-import { filtrarParticipantes } from './projeto.utils.js';
-import { Usuario } from '../usuario/entities/usuario.entity.js';
 
 export default class ProjetoService {
 
@@ -16,13 +14,9 @@ export default class ProjetoService {
 
     static async buscarUm(id) {
         const projeto = await Projeto.findById(id).lean();
-        if (!projeto) {
-            return setErro('Projeto não encontrado', HTTP_STATUS.NOT_FOUND);
-        }
-        const participacoesDoProjeto = await participacaoService.buscarTodos({ projetoId: id });
-        const participantes = filtrarParticipantes(participacoesDoProjeto);
+        if (!projeto) return setErro('Projeto não encontrado', HTTP_STATUS.NOT_FOUND);
 
-        return { ...projeto, participantes };
+        return { ...projeto };
     };
 
     static async buscarUmProjetoAluno(id) {

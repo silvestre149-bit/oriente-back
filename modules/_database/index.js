@@ -2,23 +2,22 @@ import mongoose from 'mongoose';
 import '../../env.js'
 
 import { schemaOptionsBase } from "./schema.js";
-let DB_NAME = ""
+var URL = "";
+
 switch (process.env.NODE_ENV) {
     case 'production':
-        DB_NAME = process.env.DB_PRODUCTION_NAME
+        URL = process.env.DB_URL
         break;
 
     case 'development':
-        DB_NAME = process.env.DB_DEV_NAME
+        URL = 'mongodb://localhost:27017/' + process.env.DB_DEV_NAME
         break;
 
     default:
-        DB_NAME = process.env.DB_TEST_NAME
+        URL = 'mongodb://localhost:27017/' + process.env.DB_TEST_NAME
         break;
 }
 
-
-const URL = process.env.DB_URL
 
 mongoose.connect(URL)
     .catch(err => {

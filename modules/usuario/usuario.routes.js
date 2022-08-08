@@ -10,6 +10,7 @@ router
     .get('/cod/:cod', usuarioController.buscarCod)
     .get('/buscar/professores', usuarioController.buscarProfessores)
     .get('/buscar/alunos', usuarioController.buscarAlunos)
+    .get('/alunos/projetos', usuarioController.buscarAlunosComProjetos)
     .post('/', usuarioController.criar)
     .post('/:id/participacao', usuarioParticipacaoController.adicionarParticipacao)
     .patch('/:id', usuarioController.atualizar)

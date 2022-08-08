@@ -5,6 +5,8 @@ import { Aluno } from './entities/aluno.entity.js';
 import { Professor } from "./entities/professor.entity.js";
 import jwtService from '../auth/jwt.service.js';
 import { filtrarUsuariosNovos, removerSenhaUsuarios } from "./usuario.utils.js";
+import { Participacao } from "../participacao/entities/participacao.entity.js";
+import ProjetoService from "../projeto/projeto.service.js";
 
 export default class UsuarioService {
 
@@ -45,7 +47,30 @@ export default class UsuarioService {
 
     static async buscarAlunos() {
         try {
-            return await Usuario.find({ "tipo": "aluno" }).lean();
+            return await Usuario.find({ tipo: "aluno" }).lean();
+        } catch(Error) {
+            return console.log(Error);
+        }
+    }
+
+    static async buscarAlunosComProjetos() {
+        try {
+            const alunos = await Usuario.find({ tipo: "aluno" }).lean();
+            const alunosComProjetos = await Promise.all(alunos.filter(aluno => {
+                return aluno.participacoes.length > 0;
+            }).map(async aluno => {
+                const participacoes = await Promise.all(aluno.participacoes.map(async participacao => {
+                    return await Participacao.findById(participacao).lean();
+                }));
+
+                const projetos = await Promise.all(participacoes.map(async participacao => {
+                    return await ProjetoService.buscarUm(participacao.projetoId);
+                }));
+
+                return {...aluno, projetos};
+            }));
+
+            return alunosComProjetos;
         } catch(Error) {
             return console.log(Error);
         }

@@ -35,6 +35,12 @@ export async function buscarAlunos(req, res) {
         .catch((error) => { return console.log(error) })
 }
 
+export async function buscarAlunosComProjetos(req, res) {
+    return UsuarioService.buscarAlunosComProjetos()
+        .then(data => res.json(data))
+        .catch((error) => { return console.log(error) })
+}
+
 export async function criar(req, res) {
     const { body } = req;
 
