@@ -10,6 +10,10 @@ export default class NotificacaoService {
         return Notificacao.find({ remetente: id, tipo: 'cancelamento'}).lean();
     }
 
+    static async buscarConvitesDeAlunosAbertos(id) {
+        return Notificacao.find({ projetoId: id, tipo: 'participacao'}).lean();
+    }
+
     static async buscarTodas(filtros) {
         return filtros
             ? Notificacao.find(filtros).populate({ select: ['_id', 'destinatario', 'remetenteCod', 'remetenteNome', 'status'] }).lean()
@@ -21,9 +25,10 @@ export default class NotificacaoService {
     }
 
     static async enviarConvitesParticipantes(ids, dados) {
-
+        
         async function enviarConvites() {
             Object.keys(ids).forEach(async (id) => {
+
                 if (id.slice(0, 12) === "participante") {
                     dados["destinatario"] = ids[id];
                     dados["tipo"] = "participacao";
@@ -45,7 +50,7 @@ export default class NotificacaoService {
                     return await Notificacao.create({ ...dados })
                 }
             })
-        }
+        };
 
         return await enviarConvites();
     }

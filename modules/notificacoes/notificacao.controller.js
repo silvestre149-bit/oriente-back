@@ -20,6 +20,13 @@ export async function buscarPedidoAberto(req, res) {
         .catch(({ msg, code }) => erroHandler(res, msg, code))
 }
 
+export async function buscarConvitesDeAlunosAbertos(req, res) {
+    const { id } = req.params;
+    return notificacaoService.buscarConvitesDeAlunosAbertos(id)
+        .then(data => res.json(data))
+        .catch(({ msg, code }) => erroHandler(res, msg, code))
+}
+
 export async function buscarTodas(req, res) {
     const filtros = buscarFiltros(req, ATRIBUTOS_NOTIFICACAO)
     return notificacaoService.buscarTodas(filtros)

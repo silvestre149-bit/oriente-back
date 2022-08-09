@@ -6,6 +6,7 @@ router
     .get('/', notificacaoController.buscarTodas)
     .get('/:id', notificacaoController.buscarNotificacoes)
     .get('/pedido/aberto/:id', notificacaoController.buscarPedidoAberto)
+    .get('/alunos/pendentes/:id', notificacaoController.buscarConvitesDeAlunosAbertos)
     .post('/', notificacaoController.criar)
     .post('/participantes', notificacaoController.enviarConvitesParticipantes)
     .delete('/:id', notificacaoController.deletar)
