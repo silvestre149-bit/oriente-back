@@ -1,31 +1,28 @@
 import mongoose from 'mongoose';
 
 const SessaoSchema = new mongoose.Schema({
-
     titulo: { 
         type: String
     },
-    posters: {
-        type: Number
-    },
-    posterscad: {
-        type: Number,
-        default: 0
-    },
-    situacao: {
-        type: String
-    },
-    localapresentacao: {
+    local: {
         type: String
     },
     data: {
-        type: Date
+        type: String
     },
-    disponivel: {
-        type: Boolean,
-        default: true
-    }
-
+    horario: {
+        type: String
+    },
+    semestre: {
+        type: String
+    },
+    quantidade: {
+        type: Number
+    },
+    situacao: {
+        type: ['aberto', 'fechado'],
+        default: 'aberto'
+    },
 })
 
 const Sessao = mongoose.model('sessao', SessaoSchema);
