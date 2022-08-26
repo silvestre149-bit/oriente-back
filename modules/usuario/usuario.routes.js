@@ -20,5 +20,4 @@ router
     .delete('/', usuarioController.deletarTodos)
     .delete('/deletar/alunos/:id', usuarioController.deletarTodosAlunos)
 
-
 export default router;
