@@ -6,7 +6,7 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node ./bin/www.js",
+    "start": "node --experimental-modules --es-module-specifier-resolution=node ./bin/www.js",
     "dev": "NODE_ENV=development nodemon --experimental-modules --es-module-specifier-resolution=node ./bin/www.js",
     "test": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest",
     "test:coverage": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules node node_modules/jest/bin/jest.js --coverage"
