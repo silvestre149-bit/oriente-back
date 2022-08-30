@@ -3,6 +3,7 @@ import { Router } from "express";
 const router = Router();
 
 import usuarioRouter from './modules/usuario/usuario.routes.js';
+import relatorioRouter from './modules/relatorio/relatorio.routes.js';
 import semestreRouter from './modules/semestre/semestre.routes.js';
 import projetoRouter from './modules/projeto/projeto.routes.js';
 import notificacaoRouter from './modules/notificacoes/notificacao.routes.js';
@@ -18,6 +19,7 @@ router.get('/', function (req, res) {
 
 router.use('/projeto', projetoRouter);
 router.use('/participacao', participacaoRouter);
+router.use('/relatorio', relatorioRouter);
 router.use('/semestre', semestreRouter);
 router.use('/usuario', usuarioRouter);
 router.use('/notificacoes', notificacaoRouter);
